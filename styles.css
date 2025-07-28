@@ -8,7 +8,7 @@ body {
 .header-table {
     width: 100%;
     /*background: #333;*/
-    background: linear-gradient(to right, #333, #555);
+    background: linear-gradient(to right, green, #555);
     color: #fff;
     padding: 10px 10px;
     text-align: center;
