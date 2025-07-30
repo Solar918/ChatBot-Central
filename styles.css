@@ -18,12 +18,16 @@ body {
     border: none;
 }
 
+.logo-cell {
+    width: 5%;
+}
+
 td h1 {
     font-size: 50px;
 }
 
 .header-logo {
-    max-width: 23%;
+    max-width: 225%;
     height: auto;
     border-radius: 25%;
     float: left;
