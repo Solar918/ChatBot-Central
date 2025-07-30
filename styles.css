@@ -18,34 +18,19 @@ body {
     border: none;
 }
 
-.logo-cell {
-    width: 5%;
-}
-
-td h1 {
-    font-size: 50px;
-}
-
-.chatbot-table td {
-    border: 2.5px solid black;
-    text-align: center;
-    height: 400px;
-    border-radius: 7.5%
-}
-
-.chatbot-table {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    border-collapse: separate;
-    border-spacing: 50px;
-}
-
 .header-logo {
     max-width: 225%;
     height: auto;
     border-radius: 25%;
     float: left;
+}
+
+.logo-cell {
+    width: 5%;
+}
+
+.header-table td h1 {
+    font-size: 50px;
 }
 
 nav {
@@ -85,18 +70,23 @@ main {
 .Welcome h1 {
     padding: 0;
     display: block;
-    line-height: 1.2 !important;
+    line-height: 1.2;
     margin-bottom: 4px;
 }
 
-footer {
-    background: #333;
-    color: #fff;
+.chatbot-table td {
+    border: 2.5px solid black;
     text-align: center;
-    padding: 10px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    height: 400px;
+    border-radius: 7.5%
+}
+
+.chatbot-table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: separate;
+    border-spacing: 50px;
 }
 
 table {
@@ -112,8 +102,8 @@ th {
     background: #f4f4f4;
 }
 
-.chatbot-description-table {
-    border: 1px solid white;
+.chatbot-description-table td {
+    border: 2px solid white;
 }
 
 .chatbot-description-table tr:nth-child(even) {
@@ -131,4 +121,14 @@ th {
 .chatbot-description-table {
     border-radius: 12px;
     overflow: hidden;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
