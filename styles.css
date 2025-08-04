@@ -74,11 +74,20 @@ main {
     margin-bottom: 4px;
 }
 
+.featured-chatbots {
+    text-align: center;
+    font-size: xx-large;
+}
+
 .chatbot-table td {
     border: 2.5px solid black;
     text-align: center;
     height: 400px;
-    border-radius: 7.5%
+    border-radius: 7.5%;
+}
+
+.chatbots{
+    margin-top: -50px;
 }
 
 .chatbot-table {
