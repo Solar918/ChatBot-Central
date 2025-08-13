@@ -155,16 +155,15 @@ main {
 }
 
 .chatbot-message {
-    border: 2.5px solid black;
-    text-align: center;
-    border-radius: 20px;
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: auto;
+    width: auto;
+    display: inline-block;
     font-size: 20px;
-    overflow-wrap: break-word;
-    overflow: auto; /* Hide scrollbars */
+    border: 2.5px solid black;
+    border-radius: 20px;
+    margin: 10px auto;
+    padding: 5px 10px;
+    resize: none; /* user can't drag resize */
+    overflow: hidden; /* default hidden until max height */
 }
 
 table {
