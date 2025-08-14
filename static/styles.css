@@ -164,6 +164,47 @@ main {
     padding: 5px 10px;
     resize: none; /* user can't drag resize */
     overflow: hidden; /* default hidden until max height */
+    vertical-align: middle;
+}
+
+#send-button {
+    padding: 0.5em 1em;
+    margin-left: 0.5em;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
+}
+
+ .bubble-user {
+    float: right;
+    clear: both;
+    margin: 0.5em 0;
+    max-width: 50%;
+    overflow-wrap: break-word;
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #dcf8c6;
+    border-radius: 1em;
+}
+
+ .bubble-bot {
+    float: left;
+    clear: both;
+    margin: 0.5em 0;
+    max-width: 50%;
+    overflow-wrap: break-word;
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #f1f0f0;
+    border-radius: 1em;
 }
 
 table {

@@ -3,36 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="images/ChatBot Central.png" type="image/x-icon" style="border-radius: 50%;">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/ChatBot Central.png') }}" type="image/x-icon" style="border-radius: 50%;">
     <title>ChatBot Central</title>
 </head>
 <body>
     <header>
         <table class ="header-table">
             <tr>
-                <td class ="logo-cell"><img class="header-logo" src="images/ChatBot Central.png" alt="ChatBot Central Logo"></td>
+                <td class ="logo-cell"><img class="header-logo" src="{{ url_for('static', filename='images/ChatBot Central.png') }}" alt="ChatBot Central Logo"></td>
                 <td><h1>ChatBot Central</h1></td>
                 <td>
                     <ul class="nav-list">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
                         <li class="dropdown">
                             <a href="#">ChatBots</a>
                             <ul class="dropdown-content">
-                                <li><a href="chatbot1.html">ChatBot 1</a></li>
-                                <li><a href="chatbot2.html">ChatBot 2</a></li>
-                                <li><a href="chatbot3.html">ChatBot 3</a></li>
-                                <li><a href="chatbot4.html">ChatBot 4</a></li>
+                                <li><a href="{{ url_for('chatbot', bot_name='chatbot1') }}">ChatBot 1</a></li>
+                                <li><a href="{{ url_for('chatbot', bot_name='chatbot2') }}">ChatBot 2</a></li>
+                                <li><a href="{{ url_for('chatbot', bot_name='chatbot3') }}">ChatBot 3</a></li>
+                                <li><a href="{{ url_for('chatbot', bot_name='chatbot4') }}">ChatBot 4</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact.html">About Us / Contact Us</a></li>
+                        <li><a href="{{ url_for('contact') }}">About Us / Contact Us</a></li>
                     </ul>
                 </td>
             </tr>
         </table>
     </header>
     <main>
-        <h1>ChatBot 2</h1>
+        <h1>ChatBot 4</h1>
         <section class ="chatbot-chat">
             <table class="chatbot-chat-table">
                 <tr>
@@ -44,6 +44,7 @@
             <table>
                 <tr>
                     <textarea class="chatbot-message" type="text" id="message" name="message" placeholder="Enter your message"></textarea>
+                    <button id="send-button" type="button">Send</button>
                 </tr>
             </table>
         </section>
@@ -51,6 +52,6 @@
     <footer>
         <p>&copy; 2025 ChatBot Central</p>
     </footer>
-<script src="chatbotscript.js" defer></script>
+<script src="{{ url_for('static', filename='chatbotscript.js') }}" defer></script>
 </body>
 </html>

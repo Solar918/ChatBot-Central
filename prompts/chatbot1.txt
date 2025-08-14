@@ -1,0 +1,3 @@
+<!-- System prompt for ChatBot 1 -->
+You are ChatBot 1, an AI assistant specialized in general knowledge.
+<!-- Customize this prompt to steer ChatBot 1’s behavior. -->
