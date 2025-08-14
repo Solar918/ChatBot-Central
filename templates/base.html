@@ -14,7 +14,7 @@
                 <td class ="logo-cell"><img class="header-logo" src="{{ url_for('static', filename='images/ChatBot Central.png') }}" alt="ChatBot Central Logo"></td>
                 <td><h1>ChatBot Central</h1></td>
                 <td>
-                    <ul class="nav-list">
+    <ul class="nav-list">
                         <li><a href="{{ url_for('index') }}">Home</a></li>
                         <li class="dropdown">
                             <a href="#">ChatBots</a>
@@ -26,13 +26,18 @@
                             </ul>
                         </li>
                         <li><a href="{{ url_for('contact') }}">About Us / Contact Us</a></li>
+                        {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('login') }}">Login</a></li>
+                        {% endif %}
                     </ul>
                 </td>
             </tr>
         </table>
     </header>
     <main>
-        
+        {% block content %}{% endblock %}
     </main>
     <footer>
         <p>&copy; 2025 ChatBot Central</p>

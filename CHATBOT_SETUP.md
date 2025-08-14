@@ -2,6 +2,15 @@
 
 This guide explains how to configure API keys and customize system prompts for each chatbot.
 
+## 0. Environment Configuration
+
+In your `.env` file, set the Flask secret key and database URL:
+
+```dotenv
+SECRET_KEY=your-secret-key
+DATABASE_URL=sqlite:///site.db
+```
+
 ## 1. Adding API Keys
 
 1. **Create a `.env` file** in your project root (if you haven’t already).
