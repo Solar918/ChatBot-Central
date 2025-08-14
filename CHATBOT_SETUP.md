@@ -11,6 +11,12 @@ SECRET_KEY=your-secret-key
 DATABASE_URL=sqlite:///site.db
 ```
 
+If you’re using openai-python v1.x, update your code via `openai migrate` or pin the library to v0.28.x:
+
+```bash
+pip install openai==0.28.0
+```
+
 ## 1. Adding API Keys
 
 1. **Create a `.env` file** in your project root (if you haven’t already).
@@ -66,3 +72,20 @@ For richer, versioned prompts, store each system message in its own file:
 - **Advanced prompts:** Place prompt files in `prompts/` and load dynamically.
 
 Feel free to review and let me know if you’d like any adjustments!
+
+## Docker Deployment
+
+Build the Docker image and run the container with your `.env`:
+```bash
+# Build the image
+docker build -t chatbot-central .
+
+# Run the container (reads env vars from .env and maps port 8005)
+docker run -d \
+  --name chatbot-central \
+  --env-file .env \
+  -p 8005:8005 \
+  chatbot-central
+```
+
+Then visit `http://localhost:8005/login` to sign in and access the chatbots.

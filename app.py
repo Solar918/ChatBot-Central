@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, request, jsonify, abort, redirect, url_for, flash
 from dotenv import load_dotenv
-import openai
+from openai import OpenAI
 import click
 
 from flask_sqlalchemy import SQLAlchemy
@@ -60,9 +60,11 @@ def create_user(username, password):
     db.session.commit()
     click.echo(f"Created user {username}")
 
+@app.route("/")
 def index():
     return render_template("index.html")
 
+@app.route("/contact")
 def contact():
     return render_template("contact.html")
 
@@ -86,9 +88,9 @@ def api_chat(bot_name):
     api_key = os.getenv(bot_name.upper())
     if not api_key:
         return jsonify(error=f"API key for {bot_name} not set"), 500
-    openai.api_key = api_key
+    client = OpenAI(api_key=api_key)
     try:
-        resp = openai.ChatCompletion.create(
+        resp = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPTS[bot_name]},
