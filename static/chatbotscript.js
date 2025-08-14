@@ -67,19 +67,35 @@ document.addEventListener("DOMContentLoaded", () => {
         textarea.value = "";
         resize();
 
-        // fetch bot response
+        // fetch bot response as stream
         try {
             const response = await fetch(`/api/chat/${botName}`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({message})
             });
-            const data = await response.json();
-            const answer = data.answer || data.error;
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let buffer = "";
             const botMsg = document.createElement("p");
             botMsg.className = "bubble-bot";
-            botMsg.textContent = answer;
             chatCell.appendChild(botMsg);
+
+            while (true) {
+                const {done, value} = await reader.read();
+                if (done) break;
+                buffer += decoder.decode(value, {stream: true});
+                const lines = buffer.split("\n");
+                buffer = lines.pop();
+                for (const line of lines) {
+                    if (line.trim()) {
+                        try {
+                            const json = JSON.parse(line);
+                            botMsg.textContent += json.content;
+                        } catch {}
+                    }
+                }
+            }
         } catch (error) {
             console.error("Error sending message:", error);
         }

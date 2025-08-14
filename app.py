@@ -1,7 +1,8 @@
 import os
-from flask import Flask, render_template, request, jsonify, abort, redirect, url_for, flash
+from flask import Flask, render_template, request, jsonify, abort, redirect, url_for, flash, Response, stream_with_context
 from dotenv import load_dotenv
 from openai import OpenAI
+import json
 import click
 
 from flask_sqlalchemy import SQLAlchemy
@@ -89,18 +90,21 @@ def api_chat(bot_name):
     if not api_key:
         return jsonify(error=f"API key for {bot_name} not set"), 500
     client = OpenAI(api_key=api_key)
-    try:
-        resp = client.chat.completions.create(
+
+    def generate():
+        for chunk in client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPTS[bot_name]},
                 {"role": "user", "content": user_message},
             ],
-        )
-        answer = resp.choices[0].message.content
-        return jsonify(answer=answer)
-    except Exception as e:
-        return jsonify(error=str(e)), 500
+            stream=True,
+        ):
+            delta = chunk.choices[0].delta.content
+            if delta:
+                yield json.dumps({"content": delta}) + "\n"
+
+    return Response(stream_with_context(generate()), mimetype="application/json")
 
 
 @app.route("/login", methods=["GET", "POST"])

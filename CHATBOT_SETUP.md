@@ -89,3 +89,6 @@ docker run -d \
 ```
 
 Then visit `http://localhost:8005/login` to sign in and access the chatbots.
+## Streaming responses
+
+The `/api/chat/<bot_name>` endpoint now streams tokens as they arrive, and the client-side JS appends each token to the chat bubble in real time.
