@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, jsonify, abort, redirect, url_for, flash, Response, stream_with_context
+from flask import Flask, render_template, request, jsonify, abort, redirect, url_for, flash, Response, stream_with_context, session
 from dotenv import load_dotenv
 from openai import OpenAI
 import json
@@ -30,6 +30,12 @@ SYSTEM_PROMPTS = {
     "chatbot3": os.getenv("CHATBOT3_SYSTEM", "You are ChatBot 3, an AI assistant specialized in travel advice."),
     "chatbot4": os.getenv("CHATBOT4_SYSTEM", "You are ChatBot 4, an AI assistant specialized in cooking recipes."),
 }
+# Load per-chatbot model configuration
+try:
+    with open("model_config.json") as f:
+        MODEL_CONFIG = json.load(f)
+except FileNotFoundError:
+    MODEL_CONFIG = {}
 
 
 @login_manager.user_loader
@@ -74,6 +80,8 @@ def contact():
 def chatbot(bot_name):
     if bot_name not in SYSTEM_PROMPTS:
         abort(404)
+    # Clear previous conversation on page load
+    session.pop(f"history_{bot_name}", None)
     return render_template(f"{bot_name}.html")
 
 @app.route("/api/chat/<bot_name>", methods=["POST"])
@@ -91,18 +99,27 @@ def api_chat(bot_name):
         return jsonify(error=f"API key for {bot_name} not set"), 500
     client = OpenAI(api_key=api_key)
 
+    # Initialize and update conversation history in session
+    session_key = f"history_{bot_name}"
+    history = session.get(session_key, [])
+    history.append({"role": "user", "content": user_message})
+    session[session_key] = history
+
     def generate():
+        assistant_response = ""
         for chunk in client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": SYSTEM_PROMPTS[bot_name]},
-                {"role": "user", "content": user_message},
-            ],
+            model=MODEL_CONFIG.get(bot_name, "gpt-3.5-turbo"),
+            messages=[{"role": "system", "content": SYSTEM_PROMPTS[bot_name]}, *history],
             stream=True,
         ):
-            delta = chunk.choices[0].delta.content
+            # extract streamed content from ChoiceDelta object
+            delta = getattr(chunk.choices[0].delta, "content", None)
             if delta:
+                assistant_response += delta
                 yield json.dumps({"content": delta}) + "\n"
+        # Append assistant response to history
+        history.append({"role": "assistant", "content": assistant_response})
+        session[session_key] = history
 
     return Response(stream_with_context(generate()), mimetype="application/json")
 

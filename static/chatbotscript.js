@@ -74,6 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({message})
             });
+            // If the API returns an error, display it and abort streaming
+            if (!response.ok) {
+                const errorData = await response.json();
+                botMsg.textContent = `Error: ${errorData.error || response.statusText}`;
+                return;
+            }
             const reader = response.body.getReader();
             const decoder = new TextDecoder();
             let buffer = "";
@@ -81,19 +87,32 @@ document.addEventListener("DOMContentLoaded", () => {
             botMsg.className = "bubble-bot";
             chatCell.appendChild(botMsg);
 
-            while (true) {
+            // Parse streamed JSON-lines and append tokens reliably
+            let doneRead = false;
+            while (!doneRead) {
                 const {done, value} = await reader.read();
-                if (done) break;
-                buffer += decoder.decode(value, {stream: true});
-                const lines = buffer.split("\n");
-                buffer = lines.pop();
-                for (const line of lines) {
-                    if (line.trim()) {
-                        try {
-                            const json = JSON.parse(line);
-                            botMsg.textContent += json.content;
-                        } catch {}
+                doneRead = done;
+                buffer += decoder.decode(value || new Uint8Array(), {stream: true});
+                let newlineIndex;
+                while ((newlineIndex = buffer.indexOf("\n")) !== -1) {
+                    const chunk = buffer.slice(0, newlineIndex).trim();
+                    buffer = buffer.slice(newlineIndex + 1);
+                    if (!chunk) continue;
+                    try {
+                        const {content} = JSON.parse(chunk);
+                        botMsg.textContent += content;
+                    } catch (e) {
+                        console.error("Stream parse error:", e, chunk);
                     }
+                }
+            }
+            // Append any remaining buffered chunk
+            if (buffer.trim()) {
+                try {
+                    const {content} = JSON.parse(buffer.trim());
+                    botMsg.textContent += content;
+                } catch (e) {
+                    console.error("Final parse error:", e, buffer);
                 }
             }
         } catch (error) {
