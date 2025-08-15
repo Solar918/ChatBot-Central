@@ -109,8 +109,8 @@ You can steer each bot’s behavior by customizing its system prompt:
      ```
 
 3. **External Prompt Files**
-   - Place plain-text files in `prompts/` (e.g. `prompts/chatbot1.txt`).
-   - The app will load them at startup if you switch to file-based prompts in `app.py`.
+   - Place or edit plain-text files in `prompts/` (e.g. `prompts/chatbot1.txt`).
+   - By default, the application reads each system prompt from `prompts/<bot_name>.txt`; modify those files to customize your chatbots.
 
 ## Streaming Responses
 The `/api/chat/<bot_name>` endpoint streams delta tokens as newline-delimited JSON.
