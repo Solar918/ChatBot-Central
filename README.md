@@ -91,26 +91,20 @@ Modify `model_config.json` to change the model used by each chatbot:
 Supported values include any OpenAI chat-capable model (e.g. `gpt-4`, `gpt-3.5-turbo`).
 
 ### Custom System Prompts
-You can steer each bot’s behavior by customizing its system prompt:
+System prompts are loaded in priority order:
 
-1. **Environment Overrides** (recommended for quick tweaks)
-   - In your `.env`, set `CHATBOT<N>_SYSTEM`:
-     ```dotenv
-     CHATBOT1_SYSTEM="You are an expert math tutor."
-     ```
-
-2. **Code Defaults**
-   - Edit the `SYSTEM_PROMPTS` dictionary in `app.py` to change hard-coded defaults:
-     ```python
-     SYSTEM_PROMPTS = {
-         "chatbot1": os.getenv("CHATBOT1_SYSTEM", "You are ChatBot 1…"),
-         # …
-     }
-     ```
-
-3. **External Prompt Files**
-   - Place or edit plain-text files in `prompts/` (e.g. `prompts/chatbot1.txt`).
-   - By default, the application reads each system prompt from `prompts/<bot_name>.txt`; modify those files to customize your chatbots.
+1. **Prompt files** (default) — edit `prompts/<bot_name>.txt` (e.g. `prompts/chatbot1.txt`) to set each chatbot’s system message.
+2. **Environment overrides** (optional) — for quick tests, set `CHATBOT<N>_SYSTEM` in `.env`:
+   ```dotenv
+   CHATBOT1_SYSTEM="You are an expert math tutor."
+   ```
+3. **Code defaults** (fallback) — edit the `SYSTEM_PROMPTS` dictionary in `app.py` if no file or env override is provided:
+   ```python
+   SYSTEM_PROMPTS = {
+       "chatbot1": os.getenv("CHATBOT1_SYSTEM", "You are ChatBot 1, an AI assistant…"),
+       # …
+   }
+   ```
 
 ## Streaming Responses
 The `/api/chat/<bot_name>` endpoint streams delta tokens as newline-delimited JSON.
