@@ -75,7 +75,7 @@ nav {
     display: none;
     position: absolute;
     background-color: #444;
-    min-width: 145px;
+    min-width: 203px;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
     border-radius: 8px;
 }
@@ -111,6 +111,7 @@ main {
     border-radius: 20px;
     color: white;
     border: 2.5px solid black;
+    margin-bottom: 50px;
 }
 
 .featured-chatbots {
@@ -163,7 +164,8 @@ main {
 }
 
 .chatbots{
-    margin-top: -50px;
+    /* margin-top: -50px; */
+    margin-top: 20px;
 }
 
 .chatbot-chat-table td {

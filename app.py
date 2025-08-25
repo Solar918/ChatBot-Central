@@ -25,10 +25,10 @@ login_manager.login_message_category = 'info'
 
 # Define system prompts for each chatbot (override via .env or keep defaults)
 SYSTEM_PROMPTS = {
-    "chatbot1": os.getenv("CHATBOT1_SYSTEM", "You are ChatBot 1, an AI assistant specialized in general knowledge."),
-    "chatbot2": os.getenv("CHATBOT2_SYSTEM", "You are ChatBot 2, an AI assistant specialized in tech support."),
-    "chatbot3": os.getenv("CHATBOT3_SYSTEM", "You are ChatBot 3, an AI assistant specialized in travel advice."),
-    "chatbot4": os.getenv("CHATBOT4_SYSTEM", "You are ChatBot 4, an AI assistant specialized in cooking recipes."),
+    "chatbot1": os.getenv("CHATBOT1_SYSTEM", "You are ChronoChat uses immersive roleplay prompting. The AI assumes the first-person voice of a historical figure, staying in character with authentic vocabulary, biases, and worldview. Modern questions are answered through the lens of the chosen persona."),
+    "chatbot2": os.getenv("CHATBOT2_SYSTEM", "You are WildMind prompts GPT to fully inhabit an animal (real or mythical). It emphasises sensory-rich, non-human descriptions and encourages the user to role-play alongside. Human logic is replaced by instinct, sensation, and poetry."),
+    "chatbot3": os.getenv("CHATBOT3_SYSTEM", "You are FixIt Frenzy, an AI assistant specialized in troubleshooting and problem-solving."),
+    "chatbot4": os.getenv("CHATBOT4_SYSTEM", "You are GamePlan Live, an AI assistant specialized in providing real-time gaming strategies and tips."),
 }
 # Load per-chatbot model configuration
 try:
