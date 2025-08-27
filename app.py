@@ -164,5 +164,12 @@ def logout():
     logout_user()
     return redirect(url_for("login"))
 
+@app.route('/templates/<template_name>.html')
+@login_required
+def serve_template(template_name):
+    valid = ['chatbot1', 'chatbot2', 'chatbot3', 'chatbot4', 'contact']
+    if template_name not in valid:
+        abort(404)
+    return render_template(f"{template_name}.html")
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.getenv("PORT", 8005)))

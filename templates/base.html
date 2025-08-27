@@ -19,13 +19,13 @@
                         <li class="dropdown">
                             <a href="#">ChatBots</a>
                             <ul class="dropdown-content">
-                                <li><a href="{{ url_for('chatbot', bot_name='chatbot1') }}">ChronoChat</a></li>
-                                <li><a href="{{ url_for('chatbot', bot_name='chatbot2') }}">WildMind</a></li>
-                                <li><a href="{{ url_for('chatbot', bot_name='chatbot3') }}">FixIt Frenzy</a></li>
-                                <li><a href="{{ url_for('chatbot', bot_name='chatbot4') }}">GamePlan Live</a></li>
+                                <li><a href="templates/chatbot1.html">ChronoChat</a></li>
+                                <li><a href="templates/chatbot2.html">WildMind</a></li>
+                                <li><a href="templates/chatbot3.html">FixIt Frenzy</a></li>
+                                <li><a href="templates/chatbot4.html">GamePlan Live</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{ url_for('contact') }}">About Us / Contact Us</a></li>
+                        <li><a href="templates/contact.html">About Us / Contact Us</a></li>
                         {% if current_user.is_authenticated %}
                         <li><a href="{{ url_for('logout') }}">Logout</a></li>
                         {% else %}
