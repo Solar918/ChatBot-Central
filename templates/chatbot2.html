@@ -1,5 +1,42 @@
-{% extends "base.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="icon" href="/static/images/ChatBot Central.png" type="image/x-icon" style="border-radius: 50%;">
+    <title>WildMind - ChatBot Central</title>
+</head>
+<body>
+    <header>
+        <table class ="header-table">
+            <tr>
+                <td class ="logo-cell"><img class="header-logo" src="/static/images/ChatBot Central.png" alt="ChatBot Central Logo"></td>
+                <td><h1>ChatBot Central</h1></td>
+                <td>
+                    <ul class="nav-list">
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">ChatBots</a>
+                            <ul class="dropdown-content">
+                                <li><a href="templates/chatbot1.html">ChronoChat</a></li>
+                                <li><a href="templates/chatbot2.html">WildMind</a></li>
+                                <li><a href="templates/chatbot3.html">FixIt Frenzy</a></li>
+                                <li><a href="templates/chatbot4.html">GamePlan Live</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="templates/contact.html">About Us / Contact Us</a></li>
+                        {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('login') }}">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </header>
+    <main>
 <h1>WildMind</h1>
 <section class="chatbot-chat">
   <table class="chatbot-chat-table">
@@ -13,4 +50,9 @@
   </table>
 </section>
 <script src="/static/chatbotscript.js" defer></script>
-{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2025 ChatBot Central</p>
+    </footer>
+</body>
+</html>
