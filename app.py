@@ -11,6 +11,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 load_dotenv()
 app = Flask(__name__)
+# Automatically reload templates and disable static file caching in development
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 # Configure app from environment
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
@@ -107,16 +110,29 @@ def api_chat(bot_name):
 
     def generate():
         assistant_response = ""
-        for chunk in client.chat.completions.create(
-            model=MODEL_CONFIG.get(bot_name, "gpt-3.5-turbo"),
-            messages=[{"role": "system", "content": SYSTEM_PROMPTS[bot_name]}, *history],
-            stream=True,
-        ):
-            # extract streamed content from ChoiceDelta object
-            delta = getattr(chunk.choices[0].delta, "content", None)
-            if delta:
-                assistant_response += delta
-                yield json.dumps({"content": delta}) + "\n"
+        bot_cfg = MODEL_CONFIG.get(bot_name, {})
+        model_name = bot_cfg.get("model", "gpt-3.5-turbo")
+        reasoning_level = bot_cfg.get("reasoning", "minimal")
+        system_prompt = f"{SYSTEM_PROMPTS[bot_name]}\n\n[Using {reasoning_level} reasoning]"
+        # Adjust maximum tokens based on reasoning level for faster minimal responses
+        max_tokens_map = {"minimal": 100, "medium": 300, "detailed": 600}
+        max_tokens = max_tokens_map.get(reasoning_level, 100)
+        try:
+            for chunk in client.chat.completions.create(
+                model=model_name,
+                messages=[{"role": "system", "content": system_prompt}, *history],
+                max_completion_tokens=max_tokens,
+                stream=True,
+            ):
+                # extract streamed content from ChoiceDelta object
+                delta = getattr(chunk.choices[0].delta, "content", None)
+                if delta:
+                    assistant_response += delta
+                    yield json.dumps({"content": delta}) + "\n"
+        except Exception as e:
+            # Surface any API or streaming errors to the client
+            yield json.dumps({"content": f"[Error: {str(e)}]"}) + "\n"
+            return
         # Append assistant response to history
         history.append({"role": "assistant", "content": assistant_response})
         session[session_key] = history

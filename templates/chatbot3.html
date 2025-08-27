@@ -1,57 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='images/ChatBot Central.png') }}" type="image/x-icon" style="border-radius: 50%;">
-    <title>ChatBot Central</title>
-</head>
-<body>
-    <header>
-        <table class ="header-table">
-            <tr>
-                <td class ="logo-cell"><img class="header-logo" src="{{ url_for('static', filename='images/ChatBot Central.png') }}" alt="ChatBot Central Logo"></td>
-                <td><h1>ChatBot Central</h1></td>
-                <td>
-                    <ul class="nav-list">
-                        <li><a href="{{ url_for('index') }}">Home</a></li>
-                        <li class="dropdown">
-                            <a href="#">ChatBots</a>
-                            <ul class="dropdown-content">
-                                <li><a href="{{ url_for('chatbot', bot_name='chatbot1') }}">ChronoChat</a></li>
-                                <li><a href="{{ url_for('chatbot', bot_name='chatbot2') }}">WildMind</a></li>
-                                <li><a href="{{ url_for('chatbot', bot_name='chatbot3') }}">FixIt Frenzy</a></li>
-                                <li><a href="{{ url_for('chatbot', bot_name='chatbot4') }}">GamePlan Live</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{{ url_for('contact') }}">About Us / Contact Us</a></li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
-    </header>
-    <main>
-        <h1>FixIt Frenzy</h1>
-        <section class ="chatbot-chat">
-            <table class="chatbot-chat-table">
-                <tr>
-                    <td>
-                        <p></p>
-                    </td>
-                </tr>
-            </table>
-            <table>
-                <tr>
-                    <textarea class="chatbot-message" type="text" id="message" name="message" placeholder="Enter your message"></textarea>
-                    <button id="send-button" type="button">Send</button>
-                </tr>
-            </table>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 ChatBot Central</p>
-    </footer>
+{% extends "base.html" %}
+{% block content %}
+<h1>FixIt Frenzy</h1>
+<section class="chatbot-chat">
+  <table class="chatbot-chat-table">
+    <tr><td><p></p></td></tr>
+  </table>
+  <table>
+    <tr>
+      <textarea class="chatbot-message" id="message" name="message" placeholder="Enter your message"></textarea>
+      <button id="send-button" type="button">Send</button>
+    </tr>
+  </table>
+</section>
 <script src="{{ url_for('static', filename='chatbotscript.js') }}" defer></script>
-</body>
-</html>
+{% endblock %}

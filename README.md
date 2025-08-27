@@ -79,15 +79,16 @@ Then visit `http://localhost:8005/login` in your browser.
 ## Configuration
 
 ### GPT Model Configuration
-Modify `model_config.json` to change the model used by each chatbot:
+Modify `model_config.json` to change the model and reasoning level used by each chatbot:
 ```json
 {
-  "chatbot1": "gpt-5-nano",
-  "chatbot2": "gpt-5-nano",
-  "chatbot3": "gpt-5-nano",
-  "chatbot4": "gpt-5-nano"
+  "chatbot1": { "model": "gpt-5-nano", "reasoning": "minimal" },
+  "chatbot2": { "model": "gpt-5-nano", "reasoning": "minimal" },
+  "chatbot3": { "model": "gpt-5-nano", "reasoning": "minimal" },
+  "chatbot4": { "model": "gpt-5-nano", "reasoning": "minimal" }
 }
 ```
+You can set the optional `reasoning` field to control reasoning depth (`minimal`, `medium`, `detailed`), with `minimal` as the default for faster responses.
 Supported values include any OpenAI chat-capable model (e.g. `gpt-4`, `gpt-3.5-turbo`).
 
 ### Custom System Prompts
@@ -127,5 +128,17 @@ The client-side script in `static/chatbotscript.js` reads each chunk and appends
 - Verify `.env` keys are correct and loaded (`CHATBOT<N>` must match case in `app.py`).
 - Ensure your OpenAI API quota is available and keys are valid.
 
+## Development
+To auto-reload templates and disable static file caching during development, enable Flask debug mode:
+```bash
+export FLASK_ENV=development
+export FLASK_APP=app.py
+flask run --host=0.0.0.0 --port=8005
+```
+
 ## License
 This project is licensed under the MIT License. See `LICENSE` for details.
+The application also automatically adjusts `max_completion_tokens` based on reasoning:
+- `minimal`: 100 tokens
+- `medium`: 300 tokens
+- `detailed`: 600 tokens

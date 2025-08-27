@@ -68,26 +68,27 @@ document.addEventListener("DOMContentLoaded", () => {
         resize();
 
         // fetch bot response as stream
+        // create bot message bubble
+        const botMsg = document.createElement("p");
+        botMsg.className = "bubble-bot";
+        chatCell.appendChild(botMsg);
+
         try {
             const response = await fetch(`/api/chat/${botName}`, {
                 method: "POST",
+                credentials: "same-origin",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({message})
             });
-            // If the API returns an error, display it and abort streaming
             if (!response.ok) {
                 const errorData = await response.json();
                 botMsg.textContent = `Error: ${errorData.error || response.statusText}`;
                 return;
             }
+
             const reader = response.body.getReader();
             const decoder = new TextDecoder();
             let buffer = "";
-            const botMsg = document.createElement("p");
-            botMsg.className = "bubble-bot";
-            chatCell.appendChild(botMsg);
-
-            // Parse streamed JSON-lines and append tokens reliably
             let doneRead = false;
             while (!doneRead) {
                 const {done, value} = await reader.read();
@@ -101,12 +102,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     try {
                         const {content} = JSON.parse(chunk);
                         botMsg.textContent += content;
+                        // scroll as new content arrives
+                        chatCell.parentElement.scrollTop = chatCell.parentElement.scrollHeight;
                     } catch (e) {
                         console.error("Stream parse error:", e, chunk);
                     }
                 }
             }
-            // Append any remaining buffered chunk
             if (buffer.trim()) {
                 try {
                     const {content} = JSON.parse(buffer.trim());
@@ -118,8 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (error) {
             console.error("Error sending message:", error);
         }
-
-        // scroll to bottom of chat
+        // final scroll to bottom
         chatCell.parentElement.scrollTop = chatCell.parentElement.scrollHeight;
     }
 });

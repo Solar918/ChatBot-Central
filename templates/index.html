@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='images/ChatBot Central.png') }}" type="image/x-icon" style="border-radius: 50%;">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="icon" href="/static/images/ChatBot Central.png" type="image/x-icon" style="border-radius: 50%;">
     <title>ChatBot Central</title>
 </head>
 <body>
     <header>
         <table class ="header-table">
             <tr>
-                <td class ="logo-cell"><img class="header-logo" src="{{ url_for('static', filename='images/ChatBot Central.png') }}" alt="ChatBot Central Logo"></td>
+                <td class ="logo-cell"><img class="header-logo" src="/static/images/ChatBot Central.png" alt="ChatBot Central Logo"></td>
                 <td><h1>ChatBot Central</h1></td>
                 <td>
                     <ul class="nav-list">
-                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="/index.html">Home</a></li>
                         <li class="dropdown">
                             <a href="#">ChatBots</a>
                             <ul class="dropdown-content">
-                                <li><a href="{{ url_for('chatbot', bot_name='chatbot1') }}">ChronoChat</a></li>
-                                <li><a href="{{ url_for('chatbot', bot_name='chatbot2') }}">WildMind</a></li>
-                                <li><a href="{{ url_for('chatbot', bot_name='chatbot3') }}">FixIt Frenzy</a></li>
-                                <li><a href="{{ url_for('chatbot', bot_name='chatbot4') }}">GamePlan Live</a></li>
+                                <li><a href="/templates/chatbot1.html">ChronoChat</a></li>
+                                <li><a href="/templates/chatbot2.html">WildMind</a></li>
+                                <li><a href="/templates/chatbot3.html">FixIt Frenzy</a></li>
+                                <li><a href="/templates/chatbot4.html">GamePlan Live</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{ url_for('contact') }}">About Us / Contact Us</a></li>
+                        <li><a href="/templates/contact.html">About Us / Contact Us</a></li>
                     </ul>
                 </td>
             </tr>
@@ -36,7 +36,7 @@
             <h1>Welcome to ChatBot Central!</h1>
             <p>Explore and interact with a variety of chatbots designed to entertain and assist you.</p>
             <p>Feel free to navigate through our site to learn more about the chatbots we offer.</p>
-            <p>For any inquiries, please visit our <a href="{{ url_for('contact') }}">Contact Us</a> page.</p>
+            <p>For any inquiries, please visit our <a href="/templates/contact.html">Contact Us</a> page.</p>
             <p>Enjoy your experience!</p>
         </section>
         <section>
