@@ -1,17 +1,17 @@
 {
-    "chatbot1": {
+    "chronochat": {
         "model": "gpt-3.5-turbo",
         "reasoning": "minimal"
     },
-    "chatbot2": {
+    "wildmind": {
         "model": "gpt-3.5-turbo",
         "reasoning": "minimal"
     },
-    "chatbot3": {
+    "fixitfrenzy": {
         "model": "gpt-3.5-turbo",
         "reasoning": "minimal"
     },
-    "chatbot4": {
+    "gameplanlive": {
         "model": "gpt-3.5-turbo",
         "reasoning": "minimal"
     }
