@@ -123,6 +123,34 @@ The client-side script in `static/chatbotscript.js` reads each chunk and appends
 └── Dockerfile            # Containerization instructions
 ```
 
+## Renaming Chatbot Pages
+
+The chatbot templates are loaded dynamically via Flask's route in `app.py`:
+
+```python
+@app.route('/templates/<template_name>.html')
+@login_required
+def serve_template(template_name):
+    valid = ['chatbot1', 'chatbot2', 'chatbot3', 'chatbot4', 'contact']
+    if template_name not in valid:
+        abort(404)
+    return render_template(f"{template_name}.html")
+```
+
+To rename a chatbot page (for example, from `chatbot1.html` to `historybot.html`):
+1. Rename the file in the `templates/` directory: `templates/historybot.html`.
+2. Update the `valid` list in the `serve_template` function above to include the new name:
+
+   ```diff
+   - valid = ['chatbot1', 'chatbot2', 'chatbot3', 'chatbot4', 'contact']
+   + valid = ['historybot', 'chatbot2', 'chatbot3', 'chatbot4', 'contact']
+   ```
+
+3. Update the navigation links in your templates (`base.html`, `index.html`, `contact.html`) to point to `templates/historybot.html` instead of `templates/chatbot1.html`.
+4. (Optional) If you have custom model or system prompts keyed by `chatbot1`, update the keys in `model_config.json` and the `SYSTEM_PROMPTS` dictionary in `app.py` to use `historybot`.
+
+After making these changes, restart the Flask application and navigate to `/templates/historybot.html`.
+
 ## Troubleshooting
 - Check your browser console for streaming parse errors (`Stream parse error:`).
 - Verify `.env` keys are correct and loaded (`CHATBOT<N>` must match case in `app.py`).
