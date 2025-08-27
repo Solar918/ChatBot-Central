@@ -44,7 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
     resize();
 
     // Send message on button click or Enter key
-    const botName = window.location.pathname.split("/").pop();
+    const rawName = window.location.pathname.split("/").pop();
+    const botName = rawName.replace(/\.html$/, "");
     const sendButton = document.getElementById("send-button");
     sendButton.addEventListener("click", sendMessage);
     textarea.addEventListener("keydown", event => {
