@@ -39,13 +39,13 @@ cd ChatBot-Central
 4. In `.env`, set your OpenAI API keys and Flask config:
    ```dotenv
    # OpenAI API keys for each chatbot (replace with real keys)
-   CHATBOT1=sk-...
-   CHATBOT2=sk-...
-   CHATBOT3=sk-...
-   CHATBOT4=sk-...
+   CHRONOCHAT=sk-...
+   WILDMIND=sk-...
+   FIXITFRENZY=sk-...
+   GAMEPLANLIVE=sk-...
 
    # Optional: override default system prompts
-   # CHATBOT1_SYSTEM="Your custom prompt here"
+   # CHRONOCHAT_SYSTEM="Your custom prompt here"
 
    # Flask configuration
    SECRET_KEY=your-secret-key
@@ -137,13 +137,13 @@ def serve_template(template_name):
     return render_template(f"{template_name}.html")
 ```
 
-To rename a chatbot page (for example, from `chatbot1.html` to `historybot.html`):
+To rename a chatbot page (for example, from `chronochat.html` to `historybot.html`):
 1. Rename the file in the `templates/` directory: `templates/historybot.html`.
 2. Update the `valid` list in the `serve_template` function above to include the new name:
 
    ```diff
-   - valid = ['chatbot1', 'chatbot2', 'chatbot3', 'chatbot4', 'contact']
-   + valid = ['historybot', 'chatbot2', 'chatbot3', 'chatbot4', 'contact']
+   - valid = ['chronochat', 'wildmind', 'fixitfrenzy', 'gameplanlive', 'contact']
+   + valid = ['historybot', 'wildmind', 'fixitfrenzy', 'gameplanlive', 'contact']
    ```
 
 3. Update the navigation links in your templates (`base.html`, `index.html`, `contact.html`) to point to `templates/historybot.html` instead of `templates/chatbot1.html`.
