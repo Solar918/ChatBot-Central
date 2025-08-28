@@ -15,17 +15,17 @@
                 <td><h1>ChatBot Central</h1></td>
                 <td>
                     <ul class="nav-list">
-                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li class="dropdown">
                             <a href="#">ChatBots</a>
                             <ul class="dropdown-content">
-                                <li><a href="templates/chatbot1.html">ChronoChat</a></li>
-                                <li><a href="templates/chatbot2.html">WildMind</a></li>
-                                <li><a href="templates/chatbot3.html">FixIt Frenzy</a></li>
-                                <li><a href="templates/chatbot4.html">GamePlan Live</a></li>
+                                <li><a href="/chat/chronochat">ChronoChat</a></li>
+                                <li><a href="/chat/wildmind">WildMind</a></li>
+                                <li><a href="/chat/fixitfrenzy">FixIt Frenzy</a></li>
+                                <li><a href="/chat/gameplanlive">GamePlan Live</a></li>
                             </ul>
                         </li>
-                        <li><a href="templates/contact.html">About Us / Contact Us</a></li>
+                        <li><a href="/contact">About Us / Contact Us</a></li>
                         {% if current_user.is_authenticated %}
                         <li><a href="{{ url_for('logout') }}">Logout</a></li>
                         {% else %}

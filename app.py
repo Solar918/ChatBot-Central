@@ -111,17 +111,13 @@ def api_chat(bot_name):
     def generate():
         assistant_response = ""
         bot_cfg = MODEL_CONFIG.get(bot_name, {})
-        model_name = bot_cfg.get("model", "gpt-3.5-turbo")
+        model_name = bot_cfg.get("model", "gpt-5-nano")
         reasoning_level = bot_cfg.get("reasoning", "minimal")
         system_prompt = f"{SYSTEM_PROMPTS[bot_name]}\n\n[Using {reasoning_level} reasoning]"
-        # Adjust maximum tokens based on reasoning level for faster minimal responses
-        max_tokens_map = {"minimal": 100, "medium": 300, "detailed": 600}
-        max_tokens = max_tokens_map.get(reasoning_level, 100)
         try:
             for chunk in client.chat.completions.create(
                 model=model_name,
                 messages=[{"role": "system", "content": system_prompt}, *history],
-                max_completion_tokens=max_tokens,
                 stream=True,
             ):
                 # extract streamed content from ChoiceDelta object

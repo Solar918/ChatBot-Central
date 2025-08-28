@@ -1,18 +1,18 @@
 {
     "chronochat": {
-        "model": "gpt-3.5-turbo",
+        "model": "gpt-5-nano",
         "reasoning": "minimal"
     },
     "wildmind": {
-        "model": "gpt-3.5-turbo",
+        "model": "gpt-5-nano",
         "reasoning": "minimal"
     },
     "fixitfrenzy": {
-        "model": "gpt-3.5-turbo",
+        "model": "gpt-5-nano",
         "reasoning": "minimal"
     },
     "gameplanlive": {
-        "model": "gpt-3.5-turbo",
+        "model": "gpt-5-nano",
         "reasoning": "minimal"
     }
 }
