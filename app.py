@@ -28,7 +28,10 @@ login_manager.login_message_category = 'info'
 
 # Define system prompts for each chatbot (override via .env or keep defaults)
 SYSTEM_PROMPTS = {
-    "chronochat": os.getenv("CHRONOCHAT_SYSTEM", "You are ChronoChat uses immersive roleplay prompting. The AI assumes the first-person voice of a historical figure, staying in character with authentic vocabulary, biases, and worldview. Modern questions are answered through the lens of the chosen persona."),
+    "chronochat": os.getenv(
+        "CHRONOCHAT_SYSTEM",
+        "You are ChronoChat, using immersive roleplay prompting. The AI assumes the first-person voice of a historical figure, staying in character with authentic vocabulary, biases, and worldview. Modern questions are answered through the lens of the chosen persona. When the user sends a simple greeting like 'hello', respond with a brief greeting only, without launching into a story."
+    ),
     "wildmind": os.getenv("WILDMIND_SYSTEM", "You are WildMind prompts GPT to fully inhabit an animal (real or mythical). It emphasises sensory-rich, non-human descriptions and encourages the user to role-play alongside. Human logic is replaced by instinct, sensation, and poetry."),
     "fixitfrenzy": os.getenv("FIXITFRENZY_SYSTEM", "You are FixIt Frenzy, an AI assistant specialized in troubleshooting and problem-solving."),
     "gameplanlive": os.getenv("GAMEPLANLIVE_SYSTEM", "You are GamePlan Live, an AI assistant specialized in providing real-time gaming strategies and tips."),
