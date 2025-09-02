@@ -19,15 +19,32 @@ body {
 }
 
 .header-logo {
-    max-width: 225%;
-    height: auto;
+    height: 135px;
+    width: auto;
     border-radius: 25%;
     float: left;
 }
 
 .logo-cell {
-    width: 5%;
+    width: 135px;
+    position: relative;
 }
+
+
+/* Title cell spacing aligned with logo */
+.title-cell {
+    padding-left: 0px;
+    white-space: nowrap;
+    position: relative;
+    text-align: left;
+}
+
+
+/* Navigation cell indicator */
+.nav-cell {
+    position: relative;
+}
+
 
 .header-table td h1 {
     font-size: 50px;
