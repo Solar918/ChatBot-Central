@@ -76,6 +76,16 @@ docker run -d \
 ```
 Then visit `http://localhost:8005/login` in your browser.
 
+## Managing User Accounts
+
+To allow multiple people to log in and use the chatbots, run the built-in Flask CLI command:
+
+```bash
+flask create-user <username> <password>
+```
+
+This command creates the necessary database tables (if they don't exist) and registers the new user. Then share the credentials and have users log in at `/login`.
+
 ## Configuration
 
 ### GPT Model Configuration
