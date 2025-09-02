@@ -76,6 +76,42 @@ docker run -d \
 ```
 Then visit `http://localhost:8005/login` in your browser.
 
+## Managing User Accounts
+
+To allow multiple people to log in and use the chatbots, run the built-in Flask CLI command:
+
+```bash
+flask create-user <username> <password>
+```
+
+This command creates the necessary database tables (if they don't exist) and registers the new user. Then share the credentials and have users log in at `/login`.
+
+To delete users or modify existing accounts, you can use the Flask shell to interact with the database:
+
+```bash
+flask shell
+```
+```python
+from app import db, User
+
+# Delete a user
+user = User.query.filter_by(username="USERNAME").first()
+db.session.delete(user)
+db.session.commit()
+
+# Change a user's password
+user = User.query.filter_by(username="USERNAME").first()
+user.set_password("NEW_PASSWORD")
+db.session.commit()
+
+# Change a user's username
+user = User.query.filter_by(username="OLD_USERNAME").first()
+user.username = "NEW_USERNAME"
+db.session.commit()
+```
+
+Exit the shell (`exit()`) and have the user log in with the updated credentials.
+
 ## Configuration
 
 ### GPT Model Configuration
