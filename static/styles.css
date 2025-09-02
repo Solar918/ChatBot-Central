@@ -104,6 +104,11 @@ main {
     display: block;
     line-height: 1.2;
     margin-bottom: 4px;
+    font-size: xx-large;
+}
+
+.welcome p {
+    font-size: large;
 }
 
 .welcome {
@@ -116,7 +121,7 @@ main {
 
 .featured-chatbots {
     text-align: center;
-    font-size: xx-large;
+    font-size: xxx-large;
 }
 
 .chatbot-table {
@@ -125,6 +130,7 @@ main {
     margin-right: auto;
     border-collapse: separate;
     border-spacing: 50px;
+    font-size: 20px;
 }
 
 .chatbot1-home-table {
