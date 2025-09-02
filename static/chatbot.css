@@ -1,4 +1,3 @@
-/* Chat page UI styles moved from styles.css */
 .chatbot-chat-table td {
     border: 2.5px solid black;
     text-align: center;
@@ -22,8 +21,8 @@
     border-radius: 20px;
     margin: 10px auto;
     padding: 5px 10px;
-    resize: none; /* user can't drag resize */
-    overflow: hidden; /* default hidden until max height */
+    resize: none;
+    overflow: hidden;
     vertical-align: middle;
 }
 

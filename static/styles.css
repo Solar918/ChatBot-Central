@@ -30,8 +30,6 @@ body {
     position: relative;
 }
 
-
-/* Title cell spacing aligned with logo */
 .title-cell {
     padding-left: 0px;
     white-space: nowrap;
@@ -39,12 +37,9 @@ body {
     text-align: left;
 }
 
-
-/* Navigation cell indicator */
 .nav-cell {
     position: relative;
 }
-
 
 .header-table td h1 {
     font-size: 50px;
@@ -187,7 +182,6 @@ main {
 }
 
 .chatbots{
-    /* margin-top: -50px; */
     margin-top: 20px;
 }
 
