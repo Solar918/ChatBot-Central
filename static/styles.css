@@ -199,8 +199,16 @@ th {
     background: #f4f4f4;
 }
 
+.chatbot-features h2 {
+    margin-top: -40px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: xxx-large;
+}
+
 .chatbot-description-table td {
     border: 2px solid white;
+    font-size: large;
 }
 
 .chatbot-description-table tr:nth-child(even) {
