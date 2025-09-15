@@ -24,6 +24,10 @@ original work. This approach reflects that the assignment’s focus was on HTML
 development, while the backend, Docker, and JavaScript components were AI-assisted to
 prioritize security and reliability.
 
+I received explicit permission from my instructor to use AI for the non-HTML/CSS parts of my
+website—such as the Python backend and JavaScript code—because the assignment is solely focused
+on HTML and these technologies were not part of its requirements.
+
 ## Prerequisites
 - Python 3.8 or higher
 - Docker (optional, for containerized deployment)
