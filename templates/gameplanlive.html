@@ -27,11 +27,13 @@
                             </ul>
                         </li>
                         <li><a href="/contact">About Us / Contact Us</a></li>
+                        <!-- Needed for Login/Logout so AI generated -->
                         {% if current_user.is_authenticated %}
                         <li><a href="{{ url_for('logout') }}">Logout</a></li>
                         {% else %}
                         <li><a href="{{ url_for('login') }}">Login</a></li>
                         {% endif %}
+                        <!-- End of AI generated code for Login/Logout -->
                     </ul>
                 </td>
             </tr>
