@@ -1,3 +1,5 @@
+# AI generated file as Docker is not part of the assignment criteria
+
 FROM python:3.10-slim
 
 WORKDIR /app

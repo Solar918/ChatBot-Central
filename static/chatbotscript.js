@@ -1,3 +1,5 @@
+// AI generated file as Javascript is not part of the assignment criteria
+
 document.addEventListener("DOMContentLoaded", () => {
     const textarea = document.querySelector(".chatbot-message");
     if (!textarea) return;
