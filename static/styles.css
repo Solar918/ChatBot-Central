@@ -111,121 +111,12 @@ main {
     text-align: center;
 }
 
-.welcome h1 {
-    padding: 0;
-    display: block;
-    line-height: 1.2;
-    margin-bottom: 4px;
-    font-size: xx-large;
-}
-
-.welcome p {
-    font-size: large;
-}
-
-.welcome {
-    background: linear-gradient(to right, #2f7371,#57a0bb);
-    border-radius: 20px;
-    color: white;
-    border: 2.5px solid black;
-    margin-bottom: 50px;
-}
-
-.featured-chatbots {
-    text-align: center;
-    font-size: xxx-large;
-}
-
-.chatbot-table {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    border-collapse: separate;
-    border-spacing: 50px;
-    font-size: 20px;
-}
-
-.chatbot1-home-table {
-    background: linear-gradient(to right, #437c90,#eeebd3);
-    color: black;
-    border: 2.5px solid black;
-    text-align: center;
-    height: 400px;
-    border-radius: 30px;
-}
-
-.chatbot2-home-table {
-    background: linear-gradient(to right, #327c97,#e9e1aa);
-    color: black;
-    border: 2.5px solid black;
-    text-align: center;
-    height: 400px;
-    border-radius: 30px;
-}
-
-.chatbot3-home-table {
-    background: linear-gradient(to right, #396271,#a2b1d5);
-    color: black;
-    border: 2.5px solid black;
-    text-align: center;
-    height: 400px;
-    border-radius: 30px;
-}
-
-.chatbot4-home-table {
-    background: linear-gradient(to right, #5abfe4,#8c83dc);
-    color: black;
-    border: 2.5px solid black;
-    text-align: center;
-    height: 400px;
-    border-radius: 30px;
-}
-
-.chatbots{
-    margin-top: 20px;
-}
-
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
 th, td {
     padding: 8px;
 }
 
 th {
     background: #f4f4f4;
-}
-
-.chatbot-features h2 {
-    margin-top: -40px;
-    margin-bottom: 10px;
-    text-align: center;
-    font-size: xxx-large;
-}
-
-.chatbot-description-table td {
-    border: 2px solid white;
-    font-size: large;
-}
-
-.chatbot-description-table tr:nth-child(even) {
-    background-color: #b8b8b8;
-}
-
-.chatbot-description-table tr:nth-child(odd) {
-    background-color: #dddddd;
-}
-
-.chatbot-description-table td th {
-    text-align: center;
-}
-
-.chatbot-description-table {
-    border-radius: 12px;
-    overflow: hidden;
 }
 
 footer {
