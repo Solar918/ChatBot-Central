@@ -1,4 +1,4 @@
-# AI generated file as python is not part of the assignment criteria
+# This is an AI generated file as python is not part of the assignment criteria
 
 import os
 from flask import Flask, render_template, request, jsonify, abort, redirect, url_for, flash, Response, stream_with_context, session

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- Head Section, Importing Styles, Icon, Title etc. -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +11,8 @@
     <title>WildMind - ChatBot Central</title>
 </head>
 <body class="chatbot-page">
+    
+    <!-- Header Section with Logo and Navigation -->
     <header>
         <table class ="header-table">
             <tr>
@@ -27,6 +31,7 @@
                             </ul>
                         </li>
                         <li><a href="/contact">About Us / Contact Us</a></li>
+                        
                         <!-- Needed for Login/Logout so AI generated -->
                         {% if current_user.is_authenticated %}
                         <li><a href="{{ url_for('logout') }}">Logout</a></li>
@@ -39,21 +44,26 @@
             </tr>
         </table>
     </header>
+    <!-- Main Content Section -->
     <main>
-<h1>WildMind</h1>
-<section class="chatbot-chat">
-  <table class="chatbot-chat-table">
-    <tr><td><p></p></td></tr>
-  </table>
-  <table>
-    <tr>
-      <textarea class="chatbot-message" id="message" name="message" placeholder="Enter your message"></textarea>
-      <button id="send-button" type="button">Send</button>
-    </tr>
-  </table>
-</section>
-<script src="/static/chatbotscript.js" defer></script>
+        <h1>WildMind</h1>
+        <section class="chatbot-chat">
+        <!-- Chat Messages -->
+        <table class="chatbot-chat-table">
+            <tr><td><p></p></td></tr>
+        </table>
+        <!-- Message Input Area -->
+        <table>
+            <tr>
+            <textarea class="chatbot-message" id="message" name="message" placeholder="Enter your message"></textarea>
+            <button id="send-button" type="button">Send</button>
+            </tr>
+        </table>
+        </section>
+        <!-- Linking to ChatBot Script -->
+        <script src="/static/chatbotscript.js" defer></script>
     </main>
+    <!-- Footer Section -->
     <footer>
         <p>&copy; 2025 ChatBot Central</p>
     </footer>

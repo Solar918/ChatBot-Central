@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- Head Section, Importing Styles, Icon, Title etc. -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +11,8 @@
     <title>ChatBot Central</title>
 </head>
 <body>
+    
+    <!-- Header Section with Logo and Navigation -->
     <header>
         <table class ="header-table">
             <tr>
@@ -32,7 +36,10 @@
             </tr>
         </table>
     </header>
+    
+    <!-- Main Content Section -->
     <main>
+        <!-- Welcome Section -->
         <section class ="welcome">
             <h1>Welcome to ChatBot Central!</h1>
             <p>Explore and interact with a variety of chatbots designed to entertain and assist you.</p>
@@ -40,19 +47,24 @@
             <p>For any inquiries, please visit our <a href="/contact">Contact Us</a> page.</p>
             <p>Enjoy your experience!</p>
         </section>
+        <!-- Featured ChatBots Text Section -->
         <section>
             <h2 class="featured-chatbots">Featured ChatBots</h2>
         </section>
 
+        <!-- ChatBots Table Section -->
         <section class ="chatbots">
             <table class ="chatbot-table">
+                <!-- Each chatbot cell is clickable and redirects to its respective chat page -->
                 <tr>
+                    <!-- ChatBot 1: ChronoChat -->
                     <td class="chatbot1-home-table"
                         onclick="location.href='/chat/chronochat';"
                         style="cursor:pointer;">
                         <h1>ChronoChat</h1>
                         <p>✨ Speak with the great minds of history — Cleopatra, Tesla, Shakespeare, Churchill. They’re alive again… for your questions, your banter, your curiosity.</p>
                     </td>
+                    <!-- ChatBot 2: WildMind -->
                     <td class="chatbot2-home-table"
                         onclick="location.href='/chat/wildmind';"
                         style="cursor:pointer;">
@@ -61,12 +73,14 @@
                     </td>
                 </tr>
                 <tr>
+                    <!-- ChatBot 3: FixitFrenzy -->
                     <td class="chatbot3-home-table"
                         onclick="location.href='/chat/fixitfrenzy';"
                         style="cursor:pointer;">
                         <h1>FixitFrenzy</h1>
                         <p>⚡ Got a bug? Meet the only helpdesk that roasts, rants, or sings you through the solution. Because fixing should be fun.</p>
                     </td>
+                    <!-- ChatBot 4: GamePlan Live -->
                     <td class="chatbot4-home-table"
                         onclick="location.href='/chat/gameplanlive';"
                         style="cursor:pointer;">
@@ -77,21 +91,26 @@
             </table>
         </section>
 
+        <!-- Chatbot Features Description Section -->
         <section class="chatbot-features">
             <h2>Features</h2>
             <table class="chatbot-description-table">
+                <!-- ChatBot 1: ChronoChat -->
                 <tr>
                     <td>ChronoChat</td>
                     <td>ChronoChat uses immersive roleplay prompting. The AI assumes the first-person voice of a historical figure, staying in character with authentic vocabulary, biases, and worldview. Modern questions are answered through the lens of the chosen persona.</td>
                 </tr>
+                <!-- ChatBot 2: WildMind -->
                 <tr>
                     <td>WildMind</td>
                     <td>WildMind prompts GPT to fully inhabit an animal (real or mythical). It emphasises sensory-rich, non-human descriptions and encourages the user to role-play alongside. Human logic is replaced by instinct, sensation, and poetry.</td>
                 </tr>
+                <!-- ChatBot 3: FixItFrenzy -->
                 <tr>
                     <td>FixIt Frenzy</td>
                     <td>FixIt Frenzy delivers accurate troubleshooting while wrapping instructions in a chosen persona. A flexible prompt ensures both correctness and exaggerated tone (sarcastic, robotic, cheerful, etc.).</td>
                 </tr>
+                <!-- ChatBot 4: GamePlan Live -->
                 <tr>
                     <td>GamePlan Live</td>
                     <td>GamePlan Live alternates between two modes: colourful sportscaster commentary and serious tactical analysis. Prompting encourages dynamic switches mid-conversation, creating both energy and depth.</td>
@@ -99,6 +118,7 @@
             </table>
         </section>
     </main>
+    <!-- Footer Section -->
     <footer>
         <p>&copy; 2025 ChatBot Central</p>
     </footer>

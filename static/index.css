@@ -1,3 +1,15 @@
+/* Homepage Styles */
+
+/* Welcome Section Styles */
+.welcome {
+    background: linear-gradient(to right, #2f7371,#57a0bb);
+    border-radius: 20px;
+    color: white;
+    border: 2.5px solid black;
+    margin-bottom: 50px;
+}
+
+/* Welcome Section Text Styles */
 .welcome h1 {
     padding: 0;
     display: block;
@@ -10,19 +22,7 @@
     font-size: large;
 }
 
-.welcome {
-    background: linear-gradient(to right, #2f7371,#57a0bb);
-    border-radius: 20px;
-    color: white;
-    border: 2.5px solid black;
-    margin-bottom: 50px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
+/* Chatbot Features Section Styles */
 .featured-chatbots {
     text-align: center;
     font-size: xxx-large;
@@ -30,6 +30,12 @@ table {
 
 .chatbots{
     margin-top: 20px;
+}
+
+/* Chatbot Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .chatbot-table {
@@ -41,6 +47,7 @@ table {
     font-size: 20px;
 }
 
+/* Individual Chatbot Table Styles */
 .chatbot1-home-table {
     background: linear-gradient(to right, #437c90,#eeebd3);
     color: black;
@@ -77,6 +84,7 @@ table {
     border-radius: 30px;
 }
 
+/* Chatbot Features Section Styles */
 .chatbot-features h2 {
     margin-top: -40px;
     margin-bottom: 10px;
@@ -84,24 +92,27 @@ table {
     font-size: xxx-large;
 }
 
+/* Chatbot Description Table Styles */
+.chatbot-description-table {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Chatbot Description Table Text Styles */
 .chatbot-description-table td {
     border: 2px solid white;
     font-size: large;
-}
-
-.chatbot-description-table tr:nth-child(even) {
-    background-color: #b8b8b8;
-}
-
-.chatbot-description-table tr:nth-child(odd) {
-    background-color: #dddddd;
 }
 
 .chatbot-description-table td th {
     text-align: center;
 }
 
-.chatbot-description-table {
-    border-radius: 12px;
-    overflow: hidden;
+/* Alternating Row Colors */
+.chatbot-description-table tr:nth-child(even) {
+    background-color: #b8b8b8;
+}
+
+.chatbot-description-table tr:nth-child(odd) {
+    background-color: #dddddd;
 }

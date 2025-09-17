@@ -1,10 +1,6 @@
-.chatbot-chat-table td {
-    border: 2.5px solid black;
-    text-align: center;
-    height: 400px;
-    border-radius: 20px;
-}
+/* Chatbot Page Styles */
 
+/* Chatbot Chat Table Styles */
 .chatbot-chat-table {
     width: 80%;
     margin-left: auto;
@@ -13,6 +9,15 @@
     border-spacing: 10px;
 }
 
+/* Chatbot Chat Table Text Styles */
+.chatbot-chat-table td {
+    border: 2.5px solid black;
+    text-align: center;
+    height: 400px;
+    border-radius: 20px;
+}
+
+/* Chat Interface Styles */
 .chatbot-message {
     width: auto;
     display: inline-block;
@@ -26,6 +31,7 @@
     vertical-align: middle;
 }
 
+/* Chat Send Button Styles */
 #send-button {
     padding: 0.5em 1em;
     margin-left: 0.5em;
@@ -38,10 +44,12 @@
     vertical-align: middle;
 }
 
+/* Chat Send Button Hover Effect */
 #send-button:hover {
     background-color: #0056b3;
 }
 
+/* Chat Bubbles Styles */
 .bubble-user {
     float: right;
     clear: both;
