@@ -6,3 +6,8 @@
     list-style-type: none;
     font-weight: bold;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
