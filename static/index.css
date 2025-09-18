@@ -33,11 +33,6 @@
 }
 
 /* Chatbot Table Styles */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
 .chatbot-table {
     width: 80%;
     margin-left: auto;

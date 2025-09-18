@@ -22,6 +22,11 @@ body {
     border: none;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
 /* Header Title Styles */
 .header-table td h1 {
     font-size: 50px;
