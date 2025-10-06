@@ -1,4 +1,15 @@
 /* Chatbot Page Styles */
+.chatbot-title {
+    text-align: center;
+    margin: 10px;
+    margin-bottom: 0px;
+}
+
+.chatbot-description {
+    font-size: large;
+    text-align: center;
+    margin: 5px;
+}
 
 /* Chatbot Chat Table Styles */
 .chatbot-chat-table {
