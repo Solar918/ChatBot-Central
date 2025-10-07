@@ -44,13 +44,13 @@
 
 /* Chat Send Button Styles */
 #send-button {
-    padding: 0.5em 1em;
-    margin-left: 0.5em;
+    padding: 8px 16px;
+    margin-left: 8px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 4px;
-    font-size: 1em;
+    font-size: 16px;
     cursor: pointer;
     vertical-align: middle;
 }
@@ -64,25 +64,25 @@
 .bubble-user {
     float: right;
     clear: both;
-    margin: 0.5em 0;
+    margin: 8px 0;
     max-width: 80%;
     overflow-wrap: break-word;
     display: inline-block;
-    padding: 0.5em 1em;
+    padding: 8px 16px;
     background-color: #dcf8c6;
-    border-radius: 1em;
+    border-radius: 16px;
     text-align: right;
 }
 
 .bubble-bot {
     float: left;
     clear: both;
-    margin: 0.5em 0;
+    margin: 8px 0;
     max-width: 80%;
     overflow-wrap: break-word;
     display: inline-block;
-    padding: 0.5em 1em;
+    padding: 8px 16px;
     background-color: #f1f0f0;
-    border-radius: 1em;
+    border-radius: 16px;
     text-align: left;
 }
