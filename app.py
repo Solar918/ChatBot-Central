@@ -75,6 +75,47 @@ def create_user(username, password):
     db.session.commit()
     click.echo(f"Created user {username}")
 
+
+@app.cli.command("delete-user")
+@click.argument("username")
+def delete_user(username):
+    """Delete an existing user."""
+    user = User.query.filter_by(username=username).first()
+    if not user:
+        click.echo(f"No such user {username}")
+        return
+    db.session.delete(user)
+    db.session.commit()
+    click.echo(f"Deleted user {username}")
+
+
+@app.cli.command("change-password")
+@click.argument("username")
+@click.argument("new_password")
+def change_password(username, new_password):
+    """Change a user's password."""
+    user = User.query.filter_by(username=username).first()
+    if not user:
+        click.echo(f"No such user {username}")
+        return
+    user.set_password(new_password)
+    db.session.commit()
+    click.echo(f"Password updated for user {username}")
+
+
+@app.cli.command("rename-user")
+@click.argument("old_username")
+@click.argument("new_username")
+def rename_user(old_username, new_username):
+    """Rename a user."""
+    user = User.query.filter_by(username=old_username).first()
+    if not user:
+        click.echo(f"No such user {old_username}")
+        return
+    user.username = new_username
+    db.session.commit()
+    click.echo(f"Renamed user {old_username} to {new_username}")
+
 @app.route("/")
 def index():
     return render_template("index.html")
