@@ -9,6 +9,23 @@ each with customizable system prompts and live token-by-token streaming response
 - Override system prompts via environment variables, code defaults, or external prompt files.
 - Containerized deployment with Docker for easy setup.
 
+## How It Works
+
+### Simple Explanation
+
+ChatBot Central runs a Flask server that hosts multiple GPT-powered chatbots, each with its own system prompt and API key. When you send a message, the backend forwards it to OpenAI, streams the response back token by token, and displays it in the web UI.
+
+### Technical Explanation
+
+- **Flask Backend** — handles routing, user authentication, and the `/api/chat/<bot_name>` streaming endpoint.
+- **System Prompt Loading** — loads system messages from `prompts/<bot_name>.txt`, then environment variables, then code defaults in `app.py`.
+- **Model Configuration** — reads per-bot model names and reasoning depth from `model_config.json`.
+- **Streaming API** — uses OpenAI's ChatCompletion API with `stream=True`, emitting newline-delimited JSON chunks.
+- **Frontend Streaming** — implemented in `static/chatbotscript.js`, which parses each JSON chunk and updates the chat UI in real time.
+- **Templates** — Jinja2 templates in `templates/` render the chat interfaces served dynamically by Flask.
+- **User Management** — provides a `flask create-user` CLI command and persists user data in a SQLite database.
+- **Docker Container** — defined by `Dockerfile`, reads `.env`, and runs the Flask app on port 8005.
+
 ## Disclaimer
 
 Some parts of this project—specifically, the login page (including its links), the Python
